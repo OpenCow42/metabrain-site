@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>metaBrain - open-source local memory for AI agents</title>
+    <meta
+      name="description"
+      content="metaBrain is open-source local document memory for AI tools, coding agents, and humans, with searchable notes, metadata, tags, links, and version history."
+    >
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="OpenCow42">
+    <meta name="theme-color" content="#0d3e3d">
+    <meta name="color-scheme" content="light">
+    <meta property="og:title" content="metaBrain - open-source local memory for AI agents">
+    <meta
+      property="og:description"
+      content="Give agents and humans one durable, searchable, local place for notes, source snippets, task context, metadata, links, and version history."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="metaBrain">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="assets/social-card.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="A laptop, local memory hub, document cards, and connected agent nodes representing metaBrain.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="metaBrain - open-source local memory for AI agents">
+    <meta
+      name="twitter:description"
+      content="Open-source local document memory for AI tools, coding agents, and humans."
+    >
+    <meta name="twitter:image" content="assets/social-card.jpg">
+    <meta name="twitter:image:alt" content="A laptop, local memory hub, document cards, and connected agent nodes representing metaBrain.">
+    <link rel="preload" href="assets/metabrain-hero.jpg" as="image">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "metaBrain",
+        "description": "Open-source local document memory for AI tools, coding agents, and humans.",
+        "codeRepository": "https://github.com/OpenCow42/metaBrain",
+        "license": "https://github.com/OpenCow42/metaBrain/blob/main/LICENSE",
+        "programmingLanguage": "Swift",
+        "runtimePlatform": ["macOS", "Linux", "Windows"],
+        "operatingSystem": ["macOS", "Linux", "Windows"],
+        "isAccessibleForFree": true,
+        "keywords": [
+          "AI agent memory",
+          "local document memory",
+          "agent tools",
+          "command line tool",
+          "open source",
+          "LevelDB",
+          "Swift"
+        ],
+        "sameAs": [
+          "https://github.com/OpenCow42/metaBrain",
+          "https://swiftpackageindex.com/OpenCow42/metaBrain"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" aria-label="Primary">
+      <nav class="nav-shell">
+        <a class="brand" href="#top" aria-label="metaBrain home">
+          <span class="brand-mark" aria-hidden="true">mb</span>
+          <span>metaBrain</span>
+        </a>
+        <div class="nav-links" aria-label="Sections">
+          <a href="#install">Install</a>
+          <a href="#agents">Agents</a>
+          <a href="#features">Features</a>
+          <a href="#open-source">Open source</a>
+        </div>
+        <a class="nav-cta" href="https://github.com/OpenCow42/metaBrain">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Open source. Local first. Agent ready.</p>
+          <h1 id="hero-title">metaBrain</h1>
+          <p class="hero-lede">
+            Local document memory for AI tools, coding agents, and the humans
+            who work with them.
+          </p>
+          <p class="hero-copy">
+            Give every agent one durable, searchable place for notes, source
+            snippets, task context, metadata, tags, links, and version history.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#install">Install now</a>
+            <a class="button secondary" href="https://github.com/OpenCow42/metaBrain">View source</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="install-band" id="install" aria-labelledby="install-title">
+        <div class="section-shell install-layout">
+          <div class="section-intro">
+            <p class="section-kicker">Start small</p>
+            <h2 id="install-title">Install it, then give agents a shared memory.</h2>
+            <p>
+              metaBrain ships as the `mb` CLI, the optional `mbd` local daemon,
+              and the embeddable `MetaBrainCore` Swift library.
+            </p>
+          </div>
+
+          <div class="terminal-panel" aria-label="Install command">
+            <div class="platform-tabs" role="tablist" aria-label="Install platform">
+              <button class="tab-button active" type="button" role="tab" aria-selected="true" data-platform="mac">macOS</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" data-platform="ubuntu24">Ubuntu 24.04</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" data-platform="ubuntu26">Ubuntu 26.04</button>
+              <button class="tab-button" type="button" role="tab" aria-selected="false" data-platform="source">Source</button>
+            </div>
+            <div class="terminal-header">
+              <div>
+                <p class="terminal-title" id="install-heading">Homebrew</p>
+                <p class="terminal-note" id="install-note">Installs both `mb` and `mbd`.</p>
+              </div>
+              <button class="copy-button" type="button" data-copy-target="install-code">Copy</button>
+            </div>
+            <pre class="code-block"><code id="install-code">brew tap OpenCow42/tap && brew install mb</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="agent-section" id="agents" aria-labelledby="agents-title">
+        <div class="section-shell agent-grid">
+          <div class="section-intro">
+            <p class="section-kicker">Made for AI and agents alike</p>
+            <h2 id="agents-title">A memory layer agents can actually use.</h2>
+            <p>
+              Agents do not need a private file convention for every task.
+              metaBrain gives them a stable local store with predictable paths,
+              searchable content, tags, metadata, references, and retained
+              versions.
+            </p>
+          </div>
+
+          <div class="workflow-panel">
+            <div class="workflow-row">
+              <span class="step-number">01</span>
+              <div>
+                <h3>Write durable facts</h3>
+                <p>Store summaries, decisions, and task state where the next agent can find them.</p>
+              </div>
+            </div>
+            <pre class="code-block compact"><code>mb put /tasks/release-checklist \
+  "Prepare first public release." \
+  --tag release --meta status=active</code></pre>
+
+            <div class="workflow-row">
+              <span class="step-number">02</span>
+              <div>
+                <h3>Search workspace memory</h3>
+                <p>Retrieve context by words, paths, tags, or metadata instead of hunting through scratch files.</p>
+              </div>
+            </div>
+            <pre class="code-block compact"><code>mb search "public release" --tag release</code></pre>
+
+            <div class="workflow-row">
+              <span class="step-number">03</span>
+              <div>
+                <h3>Patch without rewriting</h3>
+                <p>Apply focused unified diffs to stored documents and keep the old versions available.</p>
+              </div>
+            </div>
+            <pre class="code-block compact"><code>mb patch /tasks/release-checklist --patch-file change.diff</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="features-section" id="features" aria-labelledby="features-title">
+        <div class="section-shell">
+          <div class="split-heading">
+            <div>
+              <p class="section-kicker">Why try it</p>
+              <h2 id="features-title">Small CLI. Useful memory model.</h2>
+            </div>
+            <p>
+              metaBrain keeps the interface plain enough for shell scripts and
+              rich enough for long-running agent workflows.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">/</span>
+              <h3>Workspace local</h3>
+              <p>The default store lives at `.metabrain/store.leveldb`, so tools can discover it without setup ceremony.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">#</span>
+              <h3>Searchable</h3>
+              <p>Current document chunks are indexed for lexical search with tag, metadata, and path filters.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">+</span>
+              <h3>Structured</h3>
+              <p>Documents carry metadata, tags, references, retained versions, and filesystem-like paths.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">~</span>
+              <h3>Versioned</h3>
+              <p>Updates keep snapshots, and `patch` can apply unified diffs to stored document bodies.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">:</span>
+              <h3>Daemon ready</h3>
+              <p>`mbd` can serve multiple local metaBrain databases through one daemon, so agents can work with separate stores concurrently.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">*</span>
+              <h3>Embeddable core</h3>
+              <p>`MetaBrainCore` keeps shared behavior in a Swift library for future tools and interfaces.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="quickstart-section" aria-labelledby="quickstart-title">
+        <div class="section-shell quickstart-layout">
+          <div>
+            <p class="section-kicker">Five-command tour</p>
+            <h2 id="quickstart-title">Try the CLI in a clean workspace.</h2>
+            <p>
+              Create a store, write a note, browse the tree, search it, and read
+              the body back. That is enough to feel the shape of the tool.
+            </p>
+          </div>
+          <div class="terminal-panel quiet">
+            <div class="terminal-header">
+              <p class="terminal-title">Quickstart</p>
+              <button class="copy-button" type="button" data-copy-target="quickstart-code">Copy</button>
+            </div>
+            <pre class="code-block"><code id="quickstart-code">mb init
+mb put /notes/today "Remember the lexical store." --tag planning --meta source=agent
+mb list /notes --recursive --dates
+mb tree --max-depth 2
+mb search "lexical store" --tag planning
+mb get /notes/today</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="open-source-section" id="open-source" aria-labelledby="open-title">
+        <div class="section-shell open-source-grid">
+          <div>
+            <p class="section-kicker">Open source</p>
+            <h2 id="open-title">Built in the open for local-first agent work.</h2>
+            <p>
+              The project is BSD 3-Clause licensed, hosted on GitHub, and
+              currently supports macOS, Linux, and Windows.
+            </p>
+          </div>
+          <div class="source-links">
+            <a class="source-link" href="https://github.com/OpenCow42/metaBrain">
+              <span>GitHub repository</span>
+              <strong>OpenCow42/metaBrain</strong>
+            </a>
+            <a class="source-link" href="https://swiftpackageindex.com/OpenCow42/metaBrain">
+              <span>Swift Package Index</span>
+              <strong>Package details</strong>
+            </a>
+            <a class="source-link" href="https://github.com/OpenCow42/homebrew-tap">
+              <span>Homebrew tap</span>
+              <strong>OpenCow42/homebrew-tap</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell footer-layout">
+        <p>metaBrain: local memory for AI agents and human collaborators.</p>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
