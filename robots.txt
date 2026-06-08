@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://opencow42.github.io/metabrain-site/sitemap.xml
+Sitemap: https://metabrain.eu/sitemap.xml
