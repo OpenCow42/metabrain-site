@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>metaBrain - open-source local memory for AI agents</title>
+    <title>metaBrain - local memory and server for AI agents</title>
     <meta
       name="description"
-      content="metaBrain is open-source local document memory for AI tools, coding agents, and humans, with searchable notes, metadata, tags, links, and version history."
+      content="metaBrain is open-source local document memory for AI tools, coding agents, and humans, with searchable notes, metadata, tags, links, version history, and an optional local daemon."
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="OpenCow42">
     <meta name="theme-color" content="#0d3e3d">
     <meta name="color-scheme" content="light">
-    <meta property="og:title" content="metaBrain - open-source local memory for AI agents">
+    <meta property="og:title" content="metaBrain - local memory and server for AI agents">
     <meta
       property="og:description"
-      content="Give agents and humans one durable, searchable, local place for notes, source snippets, task context, metadata, links, and version history."
+      content="Give agents and humans one durable, searchable, local place for notes, source snippets, task context, metadata, links, version history, and daemon-backed coordination."
     >
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="metaBrain">
@@ -26,10 +26,10 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="A laptop, local memory hub, document cards, and connected agent nodes representing metaBrain.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="metaBrain - open-source local memory for AI agents">
+    <meta name="twitter:title" content="metaBrain - local memory and server for AI agents">
     <meta
       name="twitter:description"
-      content="Open-source local document memory for AI tools, coding agents, and humans."
+      content="Open-source local document memory and an optional local daemon for AI tools, coding agents, and humans."
     >
     <meta name="twitter:image" content="assets/social-card.jpg">
     <meta name="twitter:image:alt" content="A laptop, local memory hub, document cards, and connected agent nodes representing metaBrain.">
@@ -41,7 +41,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         "name": "metaBrain",
-        "description": "Open-source local document memory for AI tools, coding agents, and humans.",
+        "description": "Open-source local document memory and optional local daemon for AI tools, coding agents, and humans.",
         "codeRepository": "https://github.com/OpenCow42/metaBrain",
         "license": "https://github.com/OpenCow42/metaBrain/blob/main/LICENSE",
         "programmingLanguage": "Swift",
@@ -52,6 +52,8 @@
           "AI agent memory",
           "local document memory",
           "agent tools",
+          "local daemon",
+          "agent server",
           "command line tool",
           "open source",
           "LevelDB",
@@ -75,8 +77,10 @@
         </a>
         <div class="nav-links" aria-label="Sections">
           <a href="#install">Install</a>
+          <a href="#quickstart">Quickstart</a>
           <a href="#agents">Agents</a>
           <a href="#features">Features</a>
+          <a href="#server">Server</a>
           <a href="#open-source">Open source</a>
         </div>
         <a class="nav-cta" href="https://github.com/OpenCow42/metaBrain">GitHub</a>
@@ -87,7 +91,7 @@
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-content">
-          <p class="eyebrow">Open source. Local first. Agent ready.</p>
+          <p class="eyebrow">Open source. Local first. CLI ready.</p>
           <h1 id="hero-title">metaBrain</h1>
           <p class="hero-lede">
             Local document memory for AI tools, coding agents, and the humans
@@ -108,10 +112,11 @@
         <div class="section-shell install-layout">
           <div class="section-intro">
             <p class="section-kicker">Start small</p>
-            <h2 id="install-title">Install it, then give agents a shared memory.</h2>
+            <h2 id="install-title">Install `mb`, then give agents a shared memory.</h2>
             <p>
-              metaBrain ships as the `mb` CLI, the optional `mbd` local daemon,
-              and the embeddable `MetaBrainCore` Swift library.
+              The quickest path is the `mb` CLI: initialize a local store,
+              write a note, search it, and keep moving. The optional server is
+              there later when several tools need concurrent access.
             </p>
           </div>
 
@@ -130,6 +135,31 @@
               <button class="copy-button" type="button" data-copy-target="install-code">Copy</button>
             </div>
             <pre class="code-block"><code id="install-code">brew tap OpenCow42/tap && brew install mb</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="quickstart-section" id="quickstart" aria-labelledby="quickstart-title">
+        <div class="section-shell quickstart-layout">
+          <div>
+            <p class="section-kicker">Quick CLI tour</p>
+            <h2 id="quickstart-title">Try the CLI in a clean workspace.</h2>
+            <p>
+              Create a store, write a note, browse the tree, search it, and read
+              the body back. That is enough to feel the shape of the tool.
+            </p>
+          </div>
+          <div class="terminal-panel quiet">
+            <div class="terminal-header">
+              <p class="terminal-title">Quickstart</p>
+              <button class="copy-button" type="button" data-copy-target="quickstart-code">Copy</button>
+            </div>
+            <pre class="code-block"><code id="quickstart-code">mb init
+mb put /notes/today "Remember the lexical store." --tag planning --meta source=agent
+mb list /notes --recursive --dates
+mb tree --max-depth 2
+mb search "lexical store" --tag planning
+mb get /notes/today</code></pre>
           </div>
         </div>
       </section>
@@ -216,8 +246,8 @@
             </article>
             <article class="feature-card">
               <span class="feature-icon" aria-hidden="true">:</span>
-              <h3>Daemon ready</h3>
-              <p>`mbd` can serve multiple local metaBrain databases through one daemon, so agents can work with separate stores concurrently.</p>
+              <h3>Local server</h3>
+              <p>Set up `mbd`, then regular `mb` commands get concurrent access for free: agents and humans share one endpoint instead of competing for the store lock.</p>
             </article>
             <article class="feature-card">
               <span class="feature-icon" aria-hidden="true">*</span>
@@ -228,27 +258,46 @@
         </div>
       </section>
 
-      <section class="quickstart-section" aria-labelledby="quickstart-title">
-        <div class="section-shell quickstart-layout">
-          <div>
-            <p class="section-kicker">Five-command tour</p>
-            <h2 id="quickstart-title">Try the CLI in a clean workspace.</h2>
+      <section class="server-section" id="server" aria-labelledby="server-title">
+        <div class="section-shell server-layout">
+          <div class="section-intro">
+            <p class="section-kicker">Optional local server</p>
+            <h2 id="server-title">Add `mbd` when many tools share memory.</h2>
             <p>
-              Create a store, write a note, browse the tree, search it, and read
-              the body back. That is enough to feel the shape of the tool.
+              You can use metaBrain directly through `mb` without running a
+              server. When agents and humans need concurrent access, `mbd` owns
+              the LevelDB lock, routes requests to the selected store, and keeps
+              the same command flow available through one local endpoint.
             </p>
-          </div>
-          <div class="terminal-panel quiet">
-            <div class="terminal-header">
-              <p class="terminal-title">Quickstart</p>
-              <button class="copy-button" type="button" data-copy-target="quickstart-code">Copy</button>
+
+            <div class="server-highlights" aria-label="Server capabilities">
+              <div class="server-highlight">
+                <strong>Multi-store</strong>
+                <span>One daemon socket or loopback port can serve separate `.metabrain/store.leveldb` paths.</span>
+              </div>
+              <div class="server-highlight">
+                <strong>Auto-probed</strong>
+                <span>`mb` checks `http://127.0.0.1:6374` and falls back to direct LevelDB access when no daemon is running.</span>
+              </div>
+              <div class="server-highlight">
+                <strong>Local only</strong>
+                <span>Use Unix sockets on macOS and Linux, or loopback HTTP for integrations and Windows-friendly service setup.</span>
+              </div>
             </div>
-            <pre class="code-block"><code id="quickstart-code">mb init
-mb put /notes/today "Remember the lexical store." --tag planning --meta source=agent
-mb list /notes --recursive --dates
-mb tree --max-depth 2
-mb search "lexical store" --tag planning
-mb get /notes/today</code></pre>
+          </div>
+
+          <div class="terminal-panel server-panel" aria-label="Server commands">
+            <div class="terminal-header">
+              <div>
+                <p class="terminal-title">Optional server mode</p>
+                <p class="terminal-note">Default loopback endpoint: `127.0.0.1:6374`.</p>
+              </div>
+              <button class="copy-button" type="button" data-copy-target="server-code">Copy</button>
+            </div>
+            <pre class="code-block"><code id="server-code">mbd serve --store .metabrain/store.leveldb --host 127.0.0.1
+mb version
+mb search "release checklist" --tag release
+mb --no-server search "direct LevelDB access"</code></pre>
           </div>
         </div>
       </section>
@@ -276,6 +325,10 @@ mb get /notes/today</code></pre>
               <span>Homebrew tap</span>
               <strong>OpenCow42/homebrew-tap</strong>
             </a>
+            <a class="source-link" href="https://github.com/OpenCow42/metaBrain/blob/main/docs/daemon-autostart.md">
+              <span>Daemon docs</span>
+              <strong>Autostart setup</strong>
+            </a>
           </div>
         </div>
       </section>
@@ -283,7 +336,7 @@ mb get /notes/today</code></pre>
 
     <footer class="site-footer">
       <div class="section-shell footer-layout">
-        <p>metaBrain: local memory for AI agents and human collaborators.</p>
+        <p>metaBrain: local memory and local server for AI agents and human collaborators.</p>
         <a href="#top">Back to top</a>
       </div>
     </footer>

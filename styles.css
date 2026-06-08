@@ -272,6 +272,7 @@ pre {
 }
 
 .install-layout,
+.server-layout,
 .agent-grid,
 .quickstart-layout,
 .open-source-grid {
@@ -395,7 +396,53 @@ pre {
 .agent-section,
 .quickstart-section {
   padding: 88px 0;
+}
+
+.quickstart-section {
   background: #f2eadf;
+}
+
+.agent-section {
+  background: var(--paper);
+}
+
+.server-section {
+  padding: 88px 0;
+  background: #e7efec;
+}
+
+.server-layout {
+  align-items: center;
+}
+
+.server-panel {
+  background: #f7fbf8;
+}
+
+.server-highlights {
+  display: grid;
+  gap: 0;
+  margin-top: 30px;
+  border-top: 1px solid rgba(23, 32, 31, 0.14);
+}
+
+.server-highlight {
+  display: grid;
+  grid-template-columns: 126px 1fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(23, 32, 31, 0.14);
+}
+
+.server-highlight strong {
+  color: var(--teal-dark);
+  font-size: 0.86rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.server-highlight span {
+  color: var(--muted);
 }
 
 .workflow-panel {
@@ -565,6 +612,7 @@ pre {
   }
 
   .install-layout,
+  .server-layout,
   .agent-grid,
   .quickstart-layout,
   .open-source-grid,
@@ -604,6 +652,7 @@ pre {
   }
 
   .install-band,
+  .server-section,
   .agent-section,
   .features-section,
   .quickstart-section,
@@ -632,6 +681,11 @@ pre {
 
   .workflow-row {
     grid-template-columns: 1fr;
+  }
+
+  .server-highlight {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .feature-grid {

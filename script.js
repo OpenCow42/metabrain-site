@@ -6,7 +6,7 @@ const installOptions = {
   },
   ubuntu24: {
     title: "Ubuntu 24.04",
-    note: "Installs the `metabrain` package for amd64.",
+    note: "Installs the `metabrain` package with `mb` and `mbd`.",
     code: [
       "echo 'deb [trusted=yes] https://opencow42.github.io/apt-repo ubuntu24.04 main' | sudo tee /etc/apt/sources.list.d/opencow.list",
       "sudo apt update",
@@ -15,7 +15,7 @@ const installOptions = {
   },
   ubuntu26: {
     title: "Ubuntu 26.04",
-    note: "Installs the `metabrain` package for amd64.",
+    note: "Installs the `metabrain` package with `mb` and `mbd`.",
     code: [
       "echo 'deb [trusted=yes] https://opencow42.github.io/apt-repo ubuntu26.04 main' | sudo tee /etc/apt/sources.list.d/opencow.list",
       "sudo apt update",
@@ -28,7 +28,7 @@ const installOptions = {
     code: [
       "git clone https://github.com/OpenCow42/metaBrain.git",
       "cd metaBrain",
-      "swift build"
+      "swift build --product mb --product mbd"
     ].join("\n")
   }
 };
